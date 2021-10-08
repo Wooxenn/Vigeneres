@@ -1,0 +1,25 @@
+import string
+
+message = ""
+key = "caucasus"
+cipher = "asdt dafga"
+
+index = 0
+
+for c in cipher:
+    if c in string.ascil_lowercase:
+        offset = ord(key[index]) - ord('a')
+        decrypted_c_num = ord(c)- ord('a') + offset
+        if decrypted_c_num < 0:
+            decrypted_c_num = decrypted_c_num + 26
+        
+        decrypted_c = chr(decrypted_c_num + ord('a'))
+        
+        message = message + decrypted_c
+        
+        index = (index + 1) % len(key)
+    else:
+        message = message + c
+        
+print("message : " + message)
+print("cipher: " + cipher)
